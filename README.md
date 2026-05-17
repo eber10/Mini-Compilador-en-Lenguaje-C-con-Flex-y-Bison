@@ -1,29 +1,42 @@
-🔧 Mini Compilador de Lenguaje tipo C con Flex y Bison
-Proyecto desarrollado para el curso de Compiladores y Teoría de Lenguajes.
-Este es un compilador pequeño escrito en C usando las herramientas Flex y Bison que realiza análisis léxico, análisis sintáctico y genera código de tres direcciones (3AC) a partir de un código fuente similar a C.
+# 🔧 Mini Compilador de Lenguaje tipo C con Flex y Bison
 
-📌 ¿De qué trata el proyecto?
+Proyecto desarrollado para el curso de **Compiladores y Teoría de Lenguajes**.
+
+Este es un compilador pequeño escrito en **C** usando las herramientas **Flex** y **Bison** que realiza análisis léxico, análisis sintáctico y genera código de tres direcciones (3AC) a partir de un código fuente similar a C.
+
+---
+
+## 📌 ¿De qué trata el proyecto?
+
 El compilador reconoce un lenguaje propio con las siguientes características:
 
-Variables de tipo entero (int)
-Palabras reservadas: if, else, while, main, print
-Operadores aritméticos: +, -, *, /
-Operadores lógicos: >, <, >=, <=
-Bloques de código entre {}
-Condiciones entre ()
-Instrucciones terminadas con ;
-Comentarios con //
+- Variables de tipo entero (`int`)
+- Palabras reservadas: `if`, `else`, `while`, `main`, `print`
+- Operadores aritméticos: `+`, `-`, `*`, `/`
+- Operadores lógicos: `>`, `<`, `>=`, `<=`
+- Bloques de código entre `{}`
+- Condiciones entre `()`
+- Instrucciones terminadas con `;`
+- Comentarios con `//`
 
+---
 
-⚙️ Fases del compilador
-1️⃣ Análisis Léxico (Flex)
-El archivo lexer.fl define las reglas para reconocer los tokens del lenguaje como palabras reservadas, identificadores, números y operadores.
-2️⃣ Análisis Sintáctico (Bison)
-El archivo syntax.y define la gramática del lenguaje y verifica que el código fuente cumpla con las reglas sintácticas.
-3️⃣ Generación de Código (3AC)
-El compilador traduce el código fuente a código de tres direcciones, que es una representación intermedia del programa similar al código ensamblador.
+## ⚙️ Fases del compilador
 
-📁 Estructura del proyecto
+### 1️⃣ Análisis Léxico (Flex)
+El archivo `lexer.fl` define las reglas para reconocer los tokens del lenguaje como palabras reservadas, identificadores, números y operadores.
+
+### 2️⃣ Análisis Sintáctico (Bison)
+El archivo `syntax.y` define la gramática del lenguaje y verifica que el código fuente cumpla con las reglas sintácticas.
+
+### 3️⃣ Generación de Código (3AC)
+El compilador traduce el código fuente a **código de tres direcciones**, que es una representación intermedia del programa similar al código ensamblador.
+
+---
+
+## 📁 Estructura del proyecto
+
+```
 Versione 1/
 ├── lexer.fl        # Analizador léxico (Flex)
 ├── syntax.y        # Analizador sintáctico (Bison)
@@ -39,34 +52,53 @@ Versione 1/
     ├── output2
     ├── output3
     └── output4
+```
 
-🚀 ¿Cómo ejecutarlo?
-Requisitos
+---
 
-Linux o GitHub Codespaces
-flex
-bison
-gcc
+## 🚀 ¿Cómo ejecutarlo?
 
-Pasos
-1. Clonar el repositorio:
-bashgit clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
+### Requisitos
+- Linux o GitHub Codespaces
+- `flex`
+- `bison`
+- `gcc`
+
+### Pasos
+
+**1. Clonar el repositorio:**
+```bash
+git clone https://github.com/eber10/Mini-Compilador-en-lenguaje-C-con-Flex-y-Bison
 cd "Versione 1"
-2. Instalar dependencias:
-bashsudo apt-get update && sudo apt-get install flex bison -y
-3. Compilar:
-bashbison -d syntax.y
+```
+
+**2. Instalar dependencias:**
+```bash
+sudo apt-get update && sudo apt-get install flex bison -y
+```
+
+**3. Compilar:**
+```bash
+bison -d syntax.y
 flex -o lex.yy.c lexer.fl
 cp syntax.tab.h parser.h
 gcc syntax.tab.c lex.yy.c -o compiler -lfl
-4. Ejecutar con los ejemplos:
-bash./compiler < Esempi/input1
+```
+
+**4. Ejecutar con los ejemplos:**
+```bash
+./compiler < Esempi/input1
 ./compiler < Esempi/input2
 ./compiler < Esempi/input3
 ./compiler < Esempi/input4
+```
 
-📝 Ejemplo de entrada
-cmain () {
+---
+
+## 📝 Ejemplo de entrada
+
+```c
+main () {
     int a;
     int b = 0;
     int c = 10;
@@ -85,7 +117,11 @@ cmain () {
     print(b);
     print(c);
 }
-📤 Ejemplo de salida (Código 3AC)
+```
+
+## 📤 Ejemplo de salida (Código 3AC)
+
+```
 list = insertElement(list);
 t0 = 10;
 setVarList("c", t0, list);
@@ -99,6 +135,21 @@ L0:
 printf("%s: %d\n", "a", getVarList("a", list));
 printf("%s: %d\n", "b", getVarList("b", list));
 printf("%s: %d\n", "c", getVarList("c", list));
+```
 
-🛠️ Herramientas utilizadas
-HerramientaUsoFlexGenerador de analizadores léxicosBisonGenerador de analizadores sintácticosCLenguaje de implementaciónGCCCompilador de C
+---
+
+## 🛠️ Herramientas utilizadas
+
+| Herramienta | Uso |
+|-------------|-----|
+| **Flex** | Generador de analizadores léxicos |
+| **Bison** | Generador de analizadores sintácticos |
+| **C** | Lenguaje de implementación |
+| **GCC** | Compilador de C |
+
+---
+
+## 👤 Autor
+
+Proyecto basado en: [bordignonb/Compiler-using-C-Flex-Bison](https://github.com/bordignonb/Compiler-using-C-Flex-Bison)
