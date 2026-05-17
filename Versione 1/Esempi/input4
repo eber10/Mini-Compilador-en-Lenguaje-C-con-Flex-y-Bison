@@ -1,0 +1,24 @@
+main () {
+	int x = 0;
+	int i = 1;
+	int j;
+	while (i<=50) {
+		if(1<=1 && i<=17 || 29<=i && i<=33) {
+			j = 1;
+			while (j<=13) {
+				x = x + 7;
+				j = j + 1;
+			}
+		} else {
+			j = 1;
+			while (j<=17) {
+				x = x + 13;
+				j = j + 1;
+			}
+		}
+		i = i + 1;
+	}
+	print(x);
+	print(i);
+	print(j);
+}

@@ -1,0 +1,19 @@
+main () {
+	int a = 10;
+	int b = 5;
+	int c;
+	if (a==10) {
+		a = 5;
+		if(a==1) {
+		int a;
+		} else {
+		int b;
+		}
+	} else {
+		a = 1;
+		c = (a>b) && (1 <= 2);
+		print(c);
+		}
+	c = (a+-b)*(b+a);
+	print(c);
+}

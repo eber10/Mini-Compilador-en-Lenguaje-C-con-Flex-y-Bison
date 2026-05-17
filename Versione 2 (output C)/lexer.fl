@@ -1,0 +1,54 @@
+%option noyywrap
+
+%{
+	#include <stdio.h>
+	#include <math.h>
+	#include "parser.h"
+
+%}
+
+nl (\n)
+ws [ \t]
+comment ("//".*{nl})
+digit [0-9]
+digits (0|[1-9][0-9]*)
+letter [a-zA-Z]
+id {letter}({letter}|{digit})*
+num {digits}+
+
+%%
+
+{ws}+|{nl}+						{;}
+{comment}						{;}
+";"								{ return yytext[0]; }
+main								{ return MAIN; }
+int								{ return INT; }
+if									{ return IF; }
+else								{ return ELSE; }
+print 							{ return PRINT; }
+while								{ return WHILE; }
+"="								{ return yytext[0]; }
+"{"|"}"							{ return yytext[0]; }
+"("|")"							{ return yytext[0]; }
+"<="								{ return LE; }
+">="								{ return GE; }
+">"								{ return GT; }
+"<"								{ return LT; }
+"!="								{ return NE; }
+"=="								{ return EQ; }
+"&&"								{ return AND; }
+"||"								{ return OR; }
+"!"								{ return NOT; }
+"+"|"-"|"*"|"/"				{ return yytext[0]; }
+{id}								{
+										yylval.identifier = strdup(yytext);
+										return ID;
+									}
+{num}								{
+										yylval.number = atoi(yytext);
+										return NUM;
+									}
+<<EOF>>							{ return ENDFILE; }
+
+
+%%
